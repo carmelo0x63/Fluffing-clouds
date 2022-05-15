@@ -4,4 +4,5 @@ Build infrastructure as code (IaC) in the cloud with Terraform's HCL (HashiCorp 
 - [Oracle Cloud Infrastructure (OCI)](./OCI/README.md)
 - [Google Cloud Platform (GCP)](./GCP/README.md)
 - [Amazon Web Services (AWS)](./AWS/README.md)
+- [Terraform on KVM](./KVM/README.md)
 
