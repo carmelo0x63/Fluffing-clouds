@@ -34,3 +34,6 @@ tfplan
 *.lock.hcl
 *.ori
 
+# Images for cloud-init
+*.qcow2
+
