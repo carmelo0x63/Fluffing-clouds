@@ -40,3 +40,4 @@ tfplan
 # Any private or public keys
 *id_rsa*
 
+.DS_Store
