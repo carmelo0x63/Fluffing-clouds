@@ -108,13 +108,13 @@ Additionally, **no password** is set up for user `centos`. Rather, the SSH crede
 ### Same process, tested with Rocky Linux 8.6
 
 1. create image
-```
+<pre>
 $ qemu-img create \
   -f qcow2 \
   -F qcow2 \
-  -b /var/lib/libvirt/images/Rocky-8-GenericCloud.latest.x86_64.qcow2 \
+  -b /var/lib/libvirt/images/<b>Rocky-8-GenericCloud.latest.x86_64.qcow2</b> \
   snapshot-rl8-cloudimg.qcow2 10G
-```
+</pre>
 
 2. create disk
 ```
