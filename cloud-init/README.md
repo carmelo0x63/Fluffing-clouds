@@ -125,7 +125,7 @@ $ cloud-localds -v \
 ```
 
 3. deploy VM
-```
+<pre>
 $ virt-install --name ctest1 \
   --virt-type kvm \
   --memory 1024 \
@@ -137,16 +137,17 @@ $ virt-install --name ctest1 \
   --os-type Linux \
   --os-variant rhl8.0 \
   --network network:default
-```
+</pre>
 
 4. checks
-```
+<pre>
 [centos@ctest1 ~]$ uname -a
 Linux ctest1.example.com 4.18.0-372.9.1.el8.x86_64 #1 SMP Tue May 10 14:48:47 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
 
 [centos@ctest1 ~]$ cat /etc/redhat-release
 <b>Rocky Linux release 8.6 (Green Obsidian)</b>
-```
+</pre>
+
 **TBD**:
 - static IP
 - sudo
