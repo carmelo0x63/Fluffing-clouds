@@ -1,6 +1,6 @@
 # cloud-init
 
-source: [KVM: Testing cloud-init locally using KVM for a CentOS cloud image](https://fabianlee.org/2020/03/14/kvm-testing-cloud-init-locally-using-kvm-for-a-centos-cloud-image/)
+Adapted from: [KVM: Testing cloud-init locally using KVM for a CentOS cloud image](https://fabianlee.org/2020/03/14/kvm-testing-cloud-init-locally-using-kvm-for-a-centos-cloud-image/)
 
 ----
 
@@ -83,14 +83,14 @@ $ virt-install --name ctest1 \
   --disk path=ctest1-seed.qcow2,device=cdrom \
   --disk path=snapshot-centos7-cloudimg.qcow2,device=disk \
   --graphics none \
-  --os-type Linux --os-variant rhl8.0 \
+  --os-type Linux \
+  --os-variant centos7.0 \
   --network network:default
 ...
 [   62.731090] cloud-init[1235]: The system is finally up, after 62.72 seconds
 ```
 
-When the last message is displayed on console the VM is fully deployed.</br>
-**No password** is set up for user `centos`. Rather, the SSH credentials that have been injected shall be used. To finally login:
+When the last message is displayed on console the VM is fully deployed. To finally login:</br>
 ```
 $ ssh -o StrictHostKeyChecking=no -o "UserKnownHostsFile=/dev/null" -i cloud_id_rsa centos@<ip_address> 
 
@@ -101,4 +101,53 @@ Linux ctest1.example.com 3.10.0-1160.45.1.el7.x86_64 #1 SMP Wed Oct 13 17:20:51 
 192.168.122.152/24
 ```
 **NOTE**: `<ip_address>` is declared inside `network_config_static.cfg`.
+Additionally, **no password** is set up for user `centos`. Rather, the SSH credentials that have been injected shall be used. The configuration files in this repository use both options, choose wisely.
+
+----
+
+### Same process, tested with Rocky Linux 8.6
+
+1. create image
+```
+$ qemu-img create \
+  -f qcow2 \
+  -F qcow2 \
+  -b /var/lib/libvirt/images/Rocky-8-GenericCloud.latest.x86_64.qcow2 \
+  snapshot-rl8-cloudimg.qcow2 10G
+```
+
+2. create disk
+```
+$ cloud-localds -v \
+  --network-config=network_config_static.cfg \
+  ctest1-seed.qcow2 \
+  cloud_init.cfg
+```
+
+3. deploy VM
+```
+$ virt-install --name ctest1 \
+  --virt-type kvm \
+  --memory 1024 \
+  --vcpus 1 \
+  --boot hd,menu=on \
+  --disk path=ctest1-seed.qcow2,device=cdrom \
+  --disk path=snapshot-rl8-cloudimg.qcow2,device=disk \
+  --graphics none \
+  --os-type Linux \
+  --os-variant rhl8.0 \
+  --network network:default
+```
+
+4. checks
+```
+[centos@ctest1 ~]$ uname -a
+Linux ctest1.example.com 4.18.0-372.9.1.el8.x86_64 #1 SMP Tue May 10 14:48:47 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+
+[centos@ctest1 ~]$ cat /etc/redhat-release
+Rocky Linux release 8.6 (Green Obsidian)
+```
+**TBD**:
+- static IP
+- sudo
 
