@@ -40,11 +40,18 @@ Format specific information:
 
 ### Create SSH keypar (**note-to-self**: make sure .gitignore is setup not to commit any keys)
 ```
-$ ssh-keygen -t rsa -b 4096 -f id_rsa -C ctest1 -N "" -q
+$ ssh-keygen -t rsa -b 4096 -f cloud_id_rsa -C ctest1 -N "" -q
 ```
 
 ### Cloud-init and network configuration
-Please, refer to `cloud_init.cfg` and `network_config_static.cfg` in this directory
+Please, refer to `cloud_init.cfg` and `network_config_static.cfg` in this directory. Examples can be found at [Cloud config examples](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
+**IMPORTANT**: use the previously generated public key, `cloud_id_rsa.pub`, to customize `cloud_init.cfg`:
+```
+...
+    ssh-authorized-keys:
+      - ssh-rsa *** ctest1
+...
+```
 
 ### Inject metadata into seed image
 With `cloud-localds` we'll create a disk for `cloud-init` that's pre-configured with the appropriate metadata:
@@ -82,5 +89,14 @@ $ virt-install --name ctest1 \
 [   62.731090] cloud-init[1235]: The system is finally up, after 62.72 seconds
 ```
 
-When the last message is displayed on console the VM is fully deployed.
+When the last message is displayed on console the VM is fully deployed.</br>
+**No password** is set up for user `centos`. Rather, the SSH credentials that have been injected shall be used. To finally login:
+```
+$ ssh -o StrictHostKeyChecking=no -o "UserKnownHostsFile=/dev/null" -i cloud_id_rsa centos@<ip_address> 
+[centos@ctest1 ~]$ uname -a
+Linux ctest1.example.com 3.10.0-1160.45.1.el7.x86_64 #1 SMP Wed Oct 13 17:20:51 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+[centos@ctest1 ~]$ ip add sho dev eth0 | awk '/inet / { print $2 }'
+192.168.122.152/24
+```
+**NOTE**: <ip_address> is declared inside `network_config_static.cfg`.
 
