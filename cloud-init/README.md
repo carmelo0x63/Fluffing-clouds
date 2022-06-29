@@ -93,10 +93,12 @@ When the last message is displayed on console the VM is fully deployed.</br>
 **No password** is set up for user `centos`. Rather, the SSH credentials that have been injected shall be used. To finally login:
 ```
 $ ssh -o StrictHostKeyChecking=no -o "UserKnownHostsFile=/dev/null" -i cloud_id_rsa centos@<ip_address> 
+
 [centos@ctest1 ~]$ uname -a
 Linux ctest1.example.com 3.10.0-1160.45.1.el7.x86_64 #1 SMP Wed Oct 13 17:20:51 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
 [centos@ctest1 ~]$ ip add sho dev eth0 | awk '/inet / { print $2 }'
 192.168.122.152/24
 ```
-**NOTE**: <ip_address> is declared inside `network_config_static.cfg`.
+**NOTE**: `<ip_address>` is declared inside `network_config_static.cfg`.
 
