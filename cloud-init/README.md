@@ -5,17 +5,21 @@ source: [KVM: Testing cloud-init locally using KVM for a CentOS cloud image](htt
 ----
 
 ### Create a working snapshot from original image, increase size to 10G
+We'll be using `qemu-img` (QEMU disk image utility) with `create` command and `-f` (first image format) and `-F` (second image format) flags.
 ```
 $ qemu-img create \
-  -b /var/lib/libvirt/images/CentOS-7-GenericCloud.latest.x86_64.qcow2 \
-  -F qcow2 \
   -f qcow2 \
+  -F qcow2 \
+  -b /var/lib/libvirt/images/CentOS-7-x86_64-GenericCloud-2111.qcow2 \
   snapshot-centos7-cloudimg.qcow2 10G
 
-Formatting 'snapshot-centos7-cloudimg.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=10737418240 backing_file=/var/lib/libvirt/images/CentOS-7-GenericCloud.latest.x86_64.qcow2 backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
+Formatting 'snapshot-centos7-cloudimg.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib
+size=10737418240 backing_file=/var/lib/libvirt/images/CentOS-7-GenericCloud.latest.x86_64.qcow2 backing_fmt=qcow2
+lazy_refcounts=off refcount_bits=16
 ```
 
 ### Verify
+Again, `qemu-img`, this time along with `info` command, turns out to be usesful to examine the image we have just created:
 ```
 $ qemu-img info snapshot-centos7-cloudimg.qcow2
 image: snapshot-centos7-cloudimg.qcow2
@@ -34,7 +38,7 @@ Format specific information:
     extended l2: false
 ```
 
-### Create SSH keypar (note-to-self: make sure .gitignore is setup not to commit any keys)
+### Create SSH keypar (**note-to-self**: make sure .gitignore is setup not to commit any keys)
 ```
 $ ssh-keygen -t rsa -b 4096 -f id_rsa -C ctest1 -N "" -q
 ```
@@ -43,8 +47,13 @@ $ ssh-keygen -t rsa -b 4096 -f id_rsa -C ctest1 -N "" -q
 Please, refer to `cloud_init.cfg` and `network_config_static.cfg` in this directory
 
 ### Inject metadata into seed image
+With `cloud-localds` we'll create a disk for `cloud-init` that's pre-configured with the appropriate metadata:
 ```
-$ cloud-localds -v --network-config=network_config_static.cfg ctest1-seed.qcow2 cloud_init.cfg
+$ cloud-localds -v \
+  --network-config=network_config_static.cfg \
+  ctest1-seed.qcow2 \
+  cloud_init.cfg
+
 wrote ctest1-seed.qcow2 with filesystem=iso9660 and diskformat=raw
 ```
 
