@@ -113,7 +113,7 @@ $ qemu-img create \
   -f qcow2 \
   -F qcow2 \
   -b /var/lib/libvirt/images/<b>Rocky-8-GenericCloud.latest.x86_64.qcow2</b> \
-  snapshot-rl8-cloudimg.qcow2 10G
+  <b>snapshot-rl8-cloudimg.qcow2</b> 10G
 </pre>
 
 2. create disk
@@ -132,7 +132,7 @@ $ virt-install --name ctest1 \
   --vcpus 1 \
   --boot hd,menu=on \
   --disk path=ctest1-seed.qcow2,device=cdrom \
-  --disk path=snapshot-rl8-cloudimg.qcow2,device=disk \
+  --disk path=<b>snapshot-rl8-cloudimg.qcow2,device=disk</b> \
   --graphics none \
   --os-type Linux \
   --os-variant rhl8.0 \
@@ -145,7 +145,7 @@ $ virt-install --name ctest1 \
 Linux ctest1.example.com 4.18.0-372.9.1.el8.x86_64 #1 SMP Tue May 10 14:48:47 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
 
 [centos@ctest1 ~]$ cat /etc/redhat-release
-Rocky Linux release 8.6 (Green Obsidian)
+<b>Rocky Linux release 8.6 (Green Obsidian)</b>
 ```
 **TBD**:
 - static IP
