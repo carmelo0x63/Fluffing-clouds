@@ -4,6 +4,7 @@ The directories listed below cover several technologies such as Terraform's HCL 
 
 - [cloud-init + QEMU](./cloud-init/README.md)
 - [Terraform + KVM](./KVM/README.md)
+- [Local Kubernetes/K3s cluster](./K3s/README.md)
 - [Oracle Cloud Infrastructure (OCI)](./OCI/README.md)
 - [Google Cloud Platform (GCP)](./GCP/README.md)
 - [Amazon Web Services (AWS)](./AWS/README.md)

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goweb-dep
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: appv1
+  template:
+    metadata:
+      labels:
+        zone: prod
+        version: v1
+        name: appv1
+    spec:
+      containers:
+      - name: goweb-ctr
+        image: carmelo0x99/goweb:multiarch
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goweb-pod
+  labels:
+    zone: prod
+    version: v1
+    dummy: abc
+spec:
+  containers:
+  - name: goweb-ctr
+    image: carmelo0x99/goweb:multiarch
+    ports:
+    - containerPort: 8080
