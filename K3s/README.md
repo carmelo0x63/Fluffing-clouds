@@ -77,5 +77,5 @@ and
 $ kubectl describe services goweb-svc | grep ^Selector
 Selector:                 version=v1,zone=prod
 ```
-**NOTE**: the service will try and match __all__ of the selectors it's been configured with in a logical AND fashion. If one mismatch occurs, the service will not link to the pod.
+**NOTE**: the service will try and match _all_ of the selectors it's been configured with, in a logical AND fashion. If one mismatch occurs, the service will not link to the pod.
 
