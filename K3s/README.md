@@ -3,7 +3,7 @@
 ----
 
 ### Experiments in K3s
-Our cluster has just been deployed. Nothing is running in the users namespaces:
+Our cluster has just been deployed. Nothing is running in the user namespaces:
 ```
 $ kubectl get pods -o wide
 No resources found in default namespace.
@@ -15,19 +15,19 @@ Let's start by applying `goweb-pod.yaml`:
 pod/goweb-pod created
 ```
 
-A "pod" get created and it is sent to one of the available nodes in the cluster:
+A "pod" is deployed and it is sent to one of the available nodes in the cluster:
 ```
 <user>@pico1 $ kubectl get pods -o wide
-NAME        READY   STATUS              RESTARTS   AGE   IP       NODE               NOMINATED NODE   READINESS GATES
-goweb-pod   0/1     ContainerCreating   0          5s    <none>   pico5.network.mw   <none>           <none>
+NAME        READY   STATUS              RESTARTS   AGE   IP       NODE    NOMINATED NODE   READINESS GATES
+goweb-pod   0/1     ContainerCreating   0          5s    <none>   pico5   <none>           <none>
 
 <user>@pico1 $ kubectl get pods -o wide
-NAME        READY   STATUS    RESTARTS   AGE   IP          NODE               NOMINATED NODE   READINESS GATES
-goweb-pod   1/1     Running   0          39s   10.42.4.3   pico5.network.mw   <none>           <none>
+NAME        READY   STATUS    RESTARTS   AGE   IP          NODE    NOMINATED NODE   READINESS GATES
+goweb-pod   1/1     Running   0          39s   10.42.4.3   pico5   <none>           <none>
 ```
 **NOTE**: the pod is also assigned an IP address and is connected to an internal network spanning the whole cluster.
 
-What happens underneath is that the pod is running a containerized application listening on port 8080:
+What happens underneath is that the pod is running a containerized application listening locally on port 8080:
 ```
 <user>@pico1 $ kubectl exec --stdin --tty goweb-pod -- netstat -tulpn
 Active Internet connections (only servers)
@@ -35,7 +35,7 @@ Proto Recv-Q Send-Q Local Address           Foreign Address         State       
 tcp        0      0 :::8080                 :::*                    LISTEN      1/main.go
 ```
 
-On, for instance, a different node, let's try and reach the application:
+From a different node (within the same cluster), let's try and reach the application:
 ```
 <user>@pico1 $ curl http://10.42.4.3:8080/Hello\!
 This is goweb-pod running on linux/arm64 saying: Hello!
@@ -61,4 +61,21 @@ A service has been deployed that exposes our application on a specified port (31
 <user1>@client $ curl http://10.0.2.91:31234/Hello\!                               
 This is goweb-pod running on linux/arm64 saying: Hello!
 ```
+
+In a complex scenario, how does the service to link the right pod to the right port? That happens by means of "labels":
+```
+$ kubectl describe pods goweb-pod | grep -A3 ^Labels
+Labels:           dummy=abc
+                  version=v1
+                  zone=prod
+Annotations:      <none>
+```
+
+and
+
+```
+$ kubectl describe services goweb-svc | grep ^Selector
+Selector:                 version=v1,zone=prod
+```
+**NOTE**: the service will try and match __all__ of the selectors it's been configured with in a logical AND fashion. If one mismatch occurs, the service will not link to the pod.
 
