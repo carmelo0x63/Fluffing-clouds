@@ -71,8 +71,7 @@ Labels:           dummy=abc
 Annotations:      <none>
 ```
 
-and
-
+and "selectors":
 ```
 $ kubectl describe services goweb-svc | grep ^Selector
 Selector:                 version=v1,zone=prod
