@@ -74,7 +74,7 @@ Once your [terraform.tfvars](./terraform.tfvars.ori) is complete, your new lab e
    terraform apply ["tfplan"]
    ```
 
-Congratulations! Your VMs are ready to use. The login details are available [here](https://docs.oracle.com/en-us/iaas/Content/Compute/References/images.htm#Oracle__linux-users)
+Congratulations! Your VMs are ready to use. The login details are available [here](https://docs.oracle.com/en-us/iaas/Content/Compute/References/images.htm#Oracle__linux-users).
 
 ## Where to go from here
 
