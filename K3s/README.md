@@ -25,7 +25,7 @@ goweb-pod   0/1     ContainerCreating   0          5s    <none>   pico5   <none>
 NAME        READY   STATUS    RESTARTS   AGE   IP          NODE    NOMINATED NODE   READINESS GATES
 goweb-pod   1/1     Running   0          39s   10.42.4.3   pico5   <none>           <none>
 ```
-**NOTE**: the pod is also assigned an IP address and is connected to an internal network spanning the whole cluster.
+**NOTE**: the pod is also assigned an IP address (10.42.4.3) and is connected to an internal network spanning the whole cluster.
 
 What happens underneath is that the pod is running a containerized application listening locally on port 8080:
 ```
@@ -58,11 +58,11 @@ goweb-svc    NodePort    10.43.244.13   <none>        80:31234/TCP   3s    versi
 
 A service has been deployed that exposes our application on a specified port (31234). Consequently, the application becomes reachable form an outside network:
 ```
-<user1>@client $ curl http://10.0.2.91:31234/Hello\!                               
+<user1>@client $ curl http://10.0.2.91:31234/Hello\!
 This is goweb-pod running on linux/arm64 saying: Hello!
 ```
 
-In a complex scenario, how does the service to link the right pod to the right port? That happens by means of "labels":
+In a complex scenario, how does the service to link the right pod to the right port? That happens by means of "labels" (attached to the pods):
 ```
 $ kubectl describe pods goweb-pod | grep -A3 ^Labels
 Labels:           dummy=abc
@@ -71,10 +71,9 @@ Labels:           dummy=abc
 Annotations:      <none>
 ```
 
-and "selectors":
+and "selectors" (used by the services to select any pods):
 ```
-$ kubectl describe services goweb-svc | grep ^Selector
+$ kubectl describe services goweb-svc | grep Selector
 Selector:                 version=v1,zone=prod
 ```
 **NOTE**: the service will try and match _all_ of the selectors it's been configured with, in a logical AND fashion. If one mismatch occurs, the service will not link to the pod.
-
