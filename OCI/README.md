@@ -30,18 +30,15 @@ The following resources are deployed within the free-tier offer:
 
 1. In order to deploy your lab environment with Terraform, clone or download this repository to your computer
 
-2. Follow the
-   [instructions at Oracle](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformproviderconfiguration.htm#configuring_the_terraform_provider)
-   to get these configuration parameters for the
-   [terraform.tfvars](./terraform.tfvars) configuration file:
-
+2. OCI documentations has a section describing how to [configure the provider](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformproviderconfiguration.htm#configuring_the_terraform_provider).</br> 
+   Below are listed the most important settings to be stored into [terraform.tfvars](./terraform.tfvars.ori) configuration file:
    - `tenancy_oid`
    - `user_ocid`
    - `private_key_path`
    - `fingerprint`
    - `region`
-
-   Please be careful with the value `private_key_path`, as this is not your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).
+   **NOTE**: please be careful with the value `private_key_path`, as this is not your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two). Download it and store it to a safe place upon creation!!!</br>
+   A pre-configured file, formatted for OCI CLI/SDK, can be downloaded from `Identity > Users > User Details > API Keys`!
 
 3. Depending on your chosen `region`, retrieve the image ID from [this page](https://docs.oracle.com/en-us/iaas/images/) for your instances.
 
@@ -49,8 +46,10 @@ The following resources are deployed within the free-tier offer:
    - Choose the `aarch64` variation of Ubuntu 20.04, Oracle Linux 7.x or Oracle Linux 8.x Linux distributions for the **VM.Standard.A1.Flex** instance
 
 4. Replace `vm_image_ocid_x86_64` in [terraform.tfvars](./terraform.tfvars.ori) with your chosen image ID for the **VM.Standard.E2.1.Micro** instance
+
 5. Replace `vm_image_ocid_ampere` in [terraform.tfvars](./terraform.tfvars.ori) with your chosen image ID for the **VM.Standard.A1.Flex** instance
-6. Add your SSH public key to the `ssh_authorized_keys` configuration parameter in [terraform.tfvars](./terraform.tfvars.ori)
+
+6. Add your SSH public key to the `ssh_public_key` configuration parameter in [terraform.tfvars](./terraform.tfvars.ori)
 
 ## Deployment
 
@@ -78,7 +77,11 @@ Congratulations! Your VMs are ready to use. The login details are available [her
 
 ## Where to go from here
 
-- Navigate to the [Instances page on the OCI dashboard](https://cloud.oracle.com/compute/instances) to obtain the sign-in details of your new virtual instances.
+- Navigate to the [Instances page on the OCI dashboard](https://cloud.oracle.com/compute/instances) to obtain the sign-in details of your new virtual instances. tl;dr:
+```
+$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@<ip_address>
+```
+
 <!--
 - Partition, format and mount the additional 59 GB large `/dev/sdb` volume on your **VM.Standard.A1.Flex** instance.
 -->

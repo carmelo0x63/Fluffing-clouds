@@ -32,12 +32,15 @@ override.tf.json
 # example: *tfplan*
 tfplan
 *.lock.hcl
-*.ori
+#*.ori
 
 # Images for cloud-init
 *.qcow2
 
 # Any private or public keys
 *id_rsa*
+
+# The actual terraform.tfvars file
+terraform.tfvars
 
 .DS_Store

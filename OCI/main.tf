@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.1.9"
+  required_version = ">= 1.4"
 
   backend "local" {
     path = "terraform.tfstate"
@@ -8,7 +8,7 @@ terraform {
   required_providers {
     oci = {
       source  = "hashicorp/oci"
-      version = "~> 4.75.0"
+      version = ">= 4.75"
     }
   }
 }

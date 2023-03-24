@@ -18,10 +18,10 @@ variable "vm_image_ocid_x86_64" {
   type        = string
 }
 
-variable "vm_image_ocid_ampere" {
-  description = "The OCID of the VM image to be deployed (ampere)."
-  type        = string
-}
+#variable "vm_image_ocid_ampere" {
+#  description = "The OCID of the VM image to be deployed (ampere)."
+#  type        = string
+#}
 
 variable "vm_name" {
   description = "Name of the virtual machine."
