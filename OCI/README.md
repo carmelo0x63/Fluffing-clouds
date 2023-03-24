@@ -23,7 +23,7 @@ The following resources are deployed within the free-tier offer:
 
 - Terraform v1.1.9 (or higher) installed on your computer
 - An Oracle Cloud Infrastructure (OCI) account
-- An [SSH public-private key pair](https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/generate-ssh-key-pair.html)
+- An [SSH public-private key pair](https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/generate-ssh-key-pair.html) which can be generated locally (e.g. `ssh-keygen`) or through the GUI. Make sure it is stored to a safe place upon creation!!!
 - Basic knowledge of the Linux command line
 
 ## Configuration
@@ -37,8 +37,9 @@ The following resources are deployed within the free-tier offer:
    - `private_key_path`
    - `fingerprint`
    - `region`
-   **NOTE**: please be careful with the value `private_key_path`, as this is not your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two). Download it and store it to a safe place upon creation!!!</br>
-   A pre-configured file, formatted for OCI CLI/SDK, can be downloaded from `Identity > Users > User Details > API Keys`!
+
+   **NOTE**: `private_key_path` is **not** your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).</br>
+   A pre-configured file, formatted for OCI CLI/SDK, can be downloaded from `Identity > Users > User Details > API Keys`. Converting it to `*.tfvars` format is immediate!
 
 3. Depending on your chosen `region`, retrieve the image ID from [this page](https://docs.oracle.com/en-us/iaas/images/) for your instances.
 
