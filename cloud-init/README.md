@@ -92,7 +92,7 @@ $ virt-install --name ctest1 \
 
 When the last message is displayed on console the VM is fully deployed. To finally login:</br>
 ```
-$ ssh -o StrictHostKeyChecking=no -o "UserKnownHostsFile=/dev/null" -i cloud_id_rsa centos@<ip_address> 
+$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i cloud_id_rsa centos@<ip_address> 
 
 [centos@ctest1 ~]$ uname -a
 Linux ctest1.example.com 3.10.0-1160.45.1.el7.x86_64 #1 SMP Wed Oct 13 17:20:51 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux

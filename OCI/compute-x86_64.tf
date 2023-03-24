@@ -3,7 +3,7 @@ resource "oci_core_instance" "vm_instance_x86_64" {
   availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id                      = oci_identity_compartment.CloudChallenge.id
   shape                               = "VM.Standard.E2.1.Micro"
-  display_name                        = join("", [var.vm_name, "0", count.index + 1])
+  display_name                        = join("", [var.vm_name, ".x86.", count.index + 1])
   preserve_boot_volume                = false
   is_pv_encryption_in_transit_enabled = true
   freeform_tags                       = var.tags
