@@ -33,7 +33,7 @@ The following resources are deployed within the free-tier offer:
 2. Follow the
    [instructions at Oracle](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformproviderconfiguration.htm#configuring_the_terraform_provider)
    to get these configuration parameters for the
-   [terraform.tfvars](./terraform.tfvars.ori) configuration file:
+   [terraform.tfvars](./terraform.tfvars) configuration file:
 
    - `tenancy_oid`
    - `user_ocid`
