@@ -12,6 +12,6 @@ output "public-ip-x86_64-instances" {
 }
 
 output "public-ip-ampere-instance" {
-  value = oci_core_instance.vm_instance_ampere.public_ip
+  value = oci_core_instance.vm_instance_ampere.*.public_ip
 }
 
