@@ -34,5 +34,9 @@ resource "oci_core_instance" "vm_instance_x86_64" {
     nsg_ids                   = [oci_core_network_security_group.cloudchallenge-network-security-group.id]
     freeform_tags             = var.tags
   }
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -u ubuntu -i remote_ip.txt --private-key '~/.ssh/oci-static-server' myplaybook.yaml"
+  }
 }
 

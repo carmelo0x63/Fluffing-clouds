@@ -90,7 +90,7 @@ Useful comands:
 
 - Navigate to the [Instances page on the OCI dashboard](https://cloud.oracle.com/compute/instances) to obtain the sign-in details of your new virtual instances. tl;dr:
 ```
-$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@<ip_address>
+$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@"$(cat remote_ip.txt)"
 ```
 
 <!--
