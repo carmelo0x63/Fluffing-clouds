@@ -107,3 +107,9 @@ $ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-
 
 **NOTE**: Oracle is providing a generous amount of free egress traffic ([10 TB/month](https://www.oracle.com/cloud/networking/networking-pricing.html))
 
+### Ansible quirks
+In case the Ansible playbook has to be re-run, the following one-liner shall be run from the same directory where Terraform state lives:
+```
+$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i remote_ip.txt --private-key ~/.ssh/oci-static-server -u ubuntu ~/ansible/playbook.yaml
+```
+

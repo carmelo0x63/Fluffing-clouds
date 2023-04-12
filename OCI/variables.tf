@@ -39,8 +39,13 @@ variable "fingerprint" {
   type        = string
 }
 
-variable "private_key_path" {
-  description = "The location of the private key."
+variable "api_private_key_path" {
+  description = "The location of the private API key."
+  type        = string
+}
+
+variable "ssh_private_key_path" {
+  description = "The location of the private SSH key."
   type        = string
 }
 
