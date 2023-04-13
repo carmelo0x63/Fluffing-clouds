@@ -1,7 +1,7 @@
 ---
 
-- name: "Setup of the remote host, 20230406"
-  hosts: all
+- name: "Ubuntu setup, 20230412"
+  hosts: localhost
   become: yes
 
   tasks:
@@ -14,5 +14,6 @@
   - name: "Installing missing packages"
     ansible.builtin.apt:
       name:
-        - bind9-dnsutils
+#        - bind9-dnsutils
+#        - vim
 

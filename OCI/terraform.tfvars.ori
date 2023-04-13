@@ -1,9 +1,10 @@
 # Refer to the README.md file to fill these in
-tenancy_ocid     = "ocid1.tenancy.***"
-user_ocid        = "ocid1.user.***"
-private_key_path = "***"
-fingerprint      = "***"
-region           = "***"
+tenancy_ocid         = "ocid1.tenancy.***"
+user_ocid            = "ocid1.user.***"
+api_private_key_path = "***"
+fingerprint          = "***"
+region               = "***"
+ssh_private_key_path = "***"
 
 # Choose your VM images here
 # Images: https://docs.oracle.com/en-us/iaas/images/ubuntu-2004/
