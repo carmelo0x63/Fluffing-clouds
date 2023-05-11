@@ -1,3 +1,4 @@
+// A single OCI instance
 resource "oci_core_instance" "vm_instance_x86_64" {
   count                               = 1
   availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[0].name

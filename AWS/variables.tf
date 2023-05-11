@@ -14,6 +14,24 @@ variable "aws_secret_key" {
   type        = string
 }
 
+variable "aws_az" {
+  type        = string
+  description = "AWS AZ"
+  default     = "eu-south-1c"
+}
+
+variable "vpc_cidr" {
+  type        = string
+  description = "CIDR for the VPC"
+  default     = "10.1.64.0/18"
+}
+
+variable "public_subnet_cidr" {
+  type        = string
+  description = "CIDR for the public subnet"
+  default     = "10.1.64.0/24"
+}
+
 variable "server_port" {
   description = "The port the server will use for HTTP requests"
   type        = number

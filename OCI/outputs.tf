@@ -18,7 +18,7 @@ output "public-ip-x86_64-instances" {
 # IP of OCI instance stored into a local file
 resource "local_file" "ip" {
     content         = oci_core_instance.vm_instance_x86_64.0.public_ip
-    filename        = "remote_ip.txt"
+    filename        = "oci_remote_ip.txt"
     file_permission = "0644"
 }
 
