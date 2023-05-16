@@ -9,17 +9,17 @@
     admin_user: "ubuntu"
 
   tasks:
-  - name: "Upgrading all APT packages"
-    apt:
-      name: "*" 
-      state: latest
-      update_cache: yes 
+#  - name: "Upgrading all APT packages"
+#    apt:
+#      name: "*" 
+#      state: latest
+#      update_cache: yes 
 
   - name: "Installing missing packages"
     ansible.builtin.apt:
       name:
 #        - bind9-dnsutils
-#        - vim
+        - vim
 
   - name: "Customizing history size and timestamp for {{ admin_user }}, 1/2"
     ansible.builtin.lineinfile:
