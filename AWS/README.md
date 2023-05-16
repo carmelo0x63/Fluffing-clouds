@@ -11,7 +11,7 @@ The following resources are deployed within the free-tier offer:
 
 ## Requirements
 
-- Terraform v1.1.9 (or higher) installed on your computer
+- Terraform v1.4 (or higher) installed on your computer
 - An Amazon Web Services (AWS) account
 - An [Amazon EC2 key pairs and Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) which can be generated locally (e.g. `ssh-keygen`) or through the GUI. Make sure it is stored to a safe place upon creation!!!
 - Basic knowledge of the Linux command line
@@ -48,6 +48,13 @@ Congratulations! Your VMs are ready to use. The login details are available [her
 Useful comands:
 - `terraform show`
 - `terraform destroy`
+
+## Where to go from here
+
+- Navigate to the **EC2 page on the AWS console** to obtain the sign-in details of your new virtual instances. tl;dr:
+```
+$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@"$(cat oci_remote_ip.txt)"
+```
 
 <!--### Ansible quirks
 In case the Ansible playbook has to be re-run, the following one-liner shall be run from the same directory where Terraform state lives:

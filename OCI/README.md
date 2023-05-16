@@ -21,7 +21,7 @@ The following resources are deployed within the free-tier offer:
 
 ## Requirements
 
-- Terraform v1.1.9 (or higher) installed on your computer
+- Terraform v1.4 (or higher) installed on your computer
 - An Oracle Cloud Infrastructure (OCI) account
 - An [SSH public-private key pair](https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/generate-ssh-key-pair.html) which can be generated locally (e.g. `ssh-keygen`) or through the GUI. Make sure it is stored to a safe place upon creation!!!
 - Basic knowledge of the Linux command line
@@ -90,7 +90,7 @@ Useful comands:
 
 - Navigate to the [Instances page on the OCI dashboard](https://cloud.oracle.com/compute/instances) to obtain the sign-in details of your new virtual instances. tl;dr:
 ```
-$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@"$(cat remote_ip.txt)"
+$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@"$(cat oci_remote_ip.txt)"
 ```
 
 <!--
