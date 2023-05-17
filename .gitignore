@@ -49,5 +49,5 @@ tfplan
 # The actual terraform.tfvars file
 terraform.tfvars
 
-remote_ip.txt
+*_remote_ip.txt
 .DS_Store

@@ -53,13 +53,13 @@ Useful comands:
 
 - Navigate to the **EC2 page on the AWS console** to obtain the sign-in details of your new virtual instances. tl;dr:
 ```
-$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-static-server ubuntu@"$(cat oci_remote_ip.txt)"
+$ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/aws-static-server ubuntu@"$(cat aws_remote_ip.txt)"
 ```
 
 <!--### Ansible quirks
 In case the Ansible playbook has to be re-run, the following one-liner shall be run from the same directory where Terraform state lives:
 ```
-$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i remote_ip.txt --private-key ~/.ssh/oci-static-server -u ubuntu ~/ansible/playbook.yaml
+$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i remote_ip.txt --private-key ~/.ssh/aws-static-server -u ubuntu ~/ansible/playbook.yaml
 ```
 -->
 
