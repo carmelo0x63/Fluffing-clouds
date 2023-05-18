@@ -1,5 +1,5 @@
 ```
-$ cat > test.tf << EOF
+$ cat > outputs.tf << EOF
 resource "null_resource" "node1" {
   provisioner "local-exec" {
     command = "echo 'GoodBye World!' >> \${path.module}/node1.txt"

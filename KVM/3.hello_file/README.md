@@ -1,5 +1,5 @@
 ```
-$ cat > test.tf << EOF
+$ cat > outputs.tf << EOF
 output "text" {
   value = file("\${path.module}/text.txt")
 }
