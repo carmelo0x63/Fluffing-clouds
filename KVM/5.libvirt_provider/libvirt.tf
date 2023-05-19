@@ -12,11 +12,11 @@ resource "libvirt_pool" "images" {
   path = var.libvirt_disk_path
 }
 
-# Defining VM Volume
+# Defining VM Volume by concatenating path+img
 resource "libvirt_volume" "almacloud" {
   name   = "almacloud.qcow2"
   pool   = libvirt_pool.images
-  source = var.libvirt_iso_path + var.alma_9_img
+  source = format("%s/%s", var.libvirt_iso_path, var.alma9_img)
   format = "qcow2"
 }
 

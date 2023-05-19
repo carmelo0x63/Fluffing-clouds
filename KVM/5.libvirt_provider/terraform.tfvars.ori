@@ -1,0 +1,5 @@
+admin_user  = "mellowiz"
+qemu_uri    = "qemu:///system"
+#qemu_uri    = "qemu+ssh://<admin_user>@<ip_address>/system"
+#alma9_img   = "https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2"
+alma9_img   = "AlmaLinux-9-GenericCloud-9.2-20230513.x86_64.qcow2"

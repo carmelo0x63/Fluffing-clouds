@@ -20,7 +20,7 @@ variable "libvirt_disk_path" {
   default     = "/var/lib/libvirt/images2"
 }
 
-variable "alma_9_img" {
+variable "alma9_img" {
   description = "AlmaLinux 9.x cloud image"
   type        = string
 }
