@@ -1,8 +1,8 @@
 # Pointer to the ISO images pool
-resource "libvirt_pool" "iso" {
-  name = "iso"
+resource "libvirt_pool" "downloads" {
+  name = "downloads"
   type = "dir"
-  path = var.libvirt_iso_path
+  path = var.libvirt_downloads_path
 }
 
 # Pointer to the disk images pool
@@ -15,8 +15,8 @@ resource "libvirt_pool" "images" {
 # Defining VM Volume by concatenating path+img
 resource "libvirt_volume" "almacloud" {
   name   = "almacloud.qcow2"
-  pool   = libvirt_pool.images
-  source = format("%s/%s", var.libvirt_iso_path, var.alma9_img)
+  pool   = libvirt_pool.images.path
+  source = format("%s/%s", var.libvirt_downloads_path, var.alma9_img)
   format = "qcow2"
 }
 

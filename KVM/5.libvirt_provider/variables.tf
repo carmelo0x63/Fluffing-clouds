@@ -8,16 +8,18 @@ variable "admin_user" {
   type        = string
 }
 
-variable "libvirt_iso_path" {
-  description = "Path to libvirt ISO images"
+variable "libvirt_downloads_path" {
+  description = "Path to libvirt Cloud images"
   type        = string
-  default     = "/var/lib/libvirt/images"
+#  default     = "/var/lib/libvirt/images"
+  default     = "./downloads"
 }
 
 variable "libvirt_disk_path" {
   description = "Path to libvirt disk images"
   type        = string
-  default     = "/var/lib/libvirt/images2"
+#  default     = "/var/lib/libvirt/images2"
+  default     = "./images"
 }
 
 variable "alma9_img" {
