@@ -1,9 +1,22 @@
+# Pointer to the ISO images pool
+resource "libvirt_pool" "iso" {
+  name = "iso"
+  type = "dir"
+  path = var.libvirt_iso_path
+}
+
+# Pointer to the disk images pool
+resource "libvirt_pool" "images" {
+  name = "images"
+  type = "dir"
+  path = var.libvirt_disk_path
+}
+
 # Defining VM Volume
 resource "libvirt_volume" "almacloud" {
   name   = "almacloud.qcow2"
-  pool   = "default"                    # List storage pools using virsh pool-list
-  #source = "https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-9.2-20230513.x86_64.qcow2"
-  source = "./AlmaLinux-9-GenericCloud-9.2-20230513.x86_64.qcow2"
+  pool   = libvirt_pool.images
+  source = var.libvirt_iso_path + var.alma_9_img
   format = "qcow2"
 }
 
