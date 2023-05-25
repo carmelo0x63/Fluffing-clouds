@@ -1,0 +1,12 @@
+#cloud-config
+# user-data.yaml
+groups:
+  - clouduser
+
+users:
+  - name: clouduser
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDQokwbHZZYfr58Y0/Z/pXRXjxBP+VoIFEsNqxIbNtMaoO60pLA1M8/FyLC4VcXXHAKl67rEParREC1cf1tMzKWlfr4eauj8DpacpewnnzXMSo0ffphOMPLBw4HflKsDZAzf5/H7YB4fuYyxlU88wEsujaGpFO68YGw+Hg4lO4BAlrMxxJCWPz41eukS5fWFoOYcZtEph6BsYZIXDEeLYe8PdWEvsLrzeTWUQvSALF6/HTWnaKpiyVWG+kaSAinDZSnIXGX8/YyrU0+cIGbxazxJtxNwFt568rifoSU1mtpjwnEdFvksuozUQ9ynpnIIRf+x6/wMneaVUNsgrKdlT8LTfE8ZxnRrgmLur4NY7XG1CRoiKdPbDq395Vmh/gk26stTeZGL3XJtwDZLJ29imO/6suFrbUxyjpo8+GNnlVWKLvjI+rtxkrXXGllCO8HkuH34e+AY4PHdYSyrl/TELW6QChiBHA9SVt5ngzfG6m1NK+IemWBkHJyRP14U2bFazX1N1l4BdAGIxLOfxMZSq0oMAoMts0Tq8ziDdmTQ6FElmF9pjgs97/exTUfUkccnPWM9U8gG3kkWfA8SGVUFj3z7uLNIIvWcqku2lEEVrje0ZNpdIFQefaSFHYnAEDuypGp3dwEeoGUou/dA7/vv3rl+kW59yPwgFu4sg0ZAfc7fQ== clouduser
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    groups: clouduser
+    shell: /bin/bash
