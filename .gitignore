@@ -42,6 +42,7 @@ tfplan
 
 # Images for cloud-init
 *.qcow2
+*.img
 
 # Any private or public keys
 *id_rsa*
