@@ -28,6 +28,11 @@ variable "vm_name" {
   type        = string
 }
 
+variable "vm_user" {
+  description = "Default user for the virtual machine."
+  type        = string
+}
+
 variable "region" {
   description = "The name of the cloud region."
   type        = string

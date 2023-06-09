@@ -10,6 +10,7 @@ ssh_private_key_path = "***"
 # Images: https://docs.oracle.com/en-us/iaas/images/ubuntu-2004/
 vm_image_ocid_x86_64 = "ocid1.image.***"
 vm_image_ocid_ampere = "ocid1.image.***"
+vm_user              = "ubuntu"
 
 # Add your SSH key here
 ssh_public_key = "***"

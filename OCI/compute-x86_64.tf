@@ -50,7 +50,7 @@ resource "oci_core_instance" "vm_instance_x86_64" {
 #  }
 
 #  provisioner "local-exec" {
-#    command = "ansible-playbook -u ubuntu -i oci_remote_ip.txt --private-key 'var.ssh_private_key_path' ansible/playbook.yaml"
+#    command = "ansible-playbook -u ${var.vm_user} -i oci_remote_ip.txt --private-key 'var.ssh_private_key_path' ansible/playbook.yaml"
 #  }
 
 #  provisioner "file" {

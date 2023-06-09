@@ -11,8 +11,8 @@ This Terraform plan builds a virtual lab environment on the Oracle Cloud Infrast
 
 The following resources are deployed within the free-tier offer:
 
-- 1x **VM.Standard.E2.1.Micro** instances (1 OCPU, 1 GB RAM, x86_64)
-- 1x **VM.Standard.A1.Flex** instance (4 OCPU, 24 GB RAM, aarch64)
+- 1x **VM.Standard.E2.1.Micro** instances (1 OCPU, 1 GB RAM, `x86_64`)
+- 1x **VM.Standard.A1.Flex** instance (4 OCPU, 24 GB RAM, `aarch64`)
 <!--
 - An additional **59 GB volume** attached to the _VM.Standard.A1.Flex_ instance
 - A **volume backup policy** taking one automatic snapshot per week (retained for 5 weeks)
@@ -30,15 +30,15 @@ The following resources are deployed within the free-tier offer:
 
 1. In order to deploy your lab environment with Terraform, clone or download this repository to your computer
 
-2. OCI documentations has a section describing how to [configure the provider](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformproviderconfiguration.htm#configuring_the_terraform_provider).</br> 
-   Below are listed the most important settings to be stored into [terraform.tfvars](./terraform.tfvars.ori) configuration file:
+2. OCI documentations has a section describing how to [configure the provider](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformproviderconfiguration.htm).</br> 
+   The most important settings to be stored into [terraform.tfvars](./terraform.tfvars.ori) configuration file are listed below:
    - `tenancy_oid`
    - `user_ocid`
    - `private_key_path`
    - `fingerprint`
    - `region`
 
-   **NOTE**: `private_key_path` is **not** your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).</br>
+   **NOTE**: `private_key_path` is **not** your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two). Additional info on [credentials, here](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/credentials.htm).</br>
    A pre-configured file, formatted for OCI CLI/SDK, can be downloaded from `Identity > Users > User Details > API Keys`. Converting it to `*.tfvars` format is immediate!
 
 3. Depending on your chosen `region`, retrieve the image ID from [this page](https://docs.oracle.com/en-us/iaas/images/) for your instances.
