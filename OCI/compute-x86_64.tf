@@ -45,17 +45,16 @@ resource "oci_core_instance" "vm_instance_x86_64" {
 #  }
 
 #  provisioner "remote-exec" {
-#    inline = ["sudo apt update", "sudo apt install -y ansible", "echo '[+] Ansible installed!'"]
 #    inline = ["sudo apt update", "echo '[+] Package list updated!'"]
 #  }
 
 #  provisioner "local-exec" {
-#    command = "ansible-playbook -u ${var.vm_user} -i oci_remote_ip.txt --private-key 'var.ssh_private_key_path' ansible/playbook.yaml"
+#    command = "ansible-playbook -u ${var.vm_user} -i ${var.oci_remote_ip} --private-key 'var.ssh_private_key_path' ansible/playbook.yaml"
 #  }
 
 #  provisioner "file" {
-#    source      = "./ansible/playbook.yaml"
-#    destination = "/home/ubuntu/playbook.yaml"
+#    source      = "./ansible/index.html"
+#    destination = "/var/www/html/index.html"
 #  }
 }
 

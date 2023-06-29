@@ -113,6 +113,6 @@ $ sudo iptables -I INPUT 6 -p tcp -m state --state NEW -m tcp --dport 8080 -j AC
 ### Ansible quirks
 In case the Ansible playbook has to be re-run, the following one-liner shall be run from the same directory where Terraform state lives:
 ```
-$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i remote_ip.txt --private-key ~/.ssh/oci-static-server -u ubuntu ~/ansible/playbook.yaml
+$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i oci_remote_ip.txt --private-key ~/.ssh/oci-static-server -u ubuntu ./ansible/playbook.yaml
 ```
 

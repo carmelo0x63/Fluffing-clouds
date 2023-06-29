@@ -1,12 +1,18 @@
 ---
 
-- name: "Ubuntu setup, 20230413"
+- name: "lighttpd setup, 20230629"
 #  hosts: localhost
   hosts: all
   become: yes
 
   vars:
     admin_user: "ubuntu"
+
+  handlers:
+  - name: restart_lighttpd
+    ansible.builtin.service:
+      name: lighttpd
+      state: restarted
 
   tasks:
 #  - name: "Upgrading all APT packages"
@@ -15,37 +21,31 @@
 #      state: latest
 #      update_cache: yes 
 
+  - name: "Allow new incoming SYN packets on TCP port 8080 (HTTP)"
+    ansible.builtin.iptables:
+      chain: INPUT
+      protocol: tcp
+      destination_port: 8080
+      jump: ACCEPT
+      action: insert
+      rule_num: 6
+
   - name: "Installing missing packages"
     ansible.builtin.apt:
       name:
-#        - bind9-dnsutils
-        - vim
+        - lighttpd
+      update_cache: yes 
 
-  - name: "Customizing history size and timestamp for {{ admin_user }}, 1/2"
-    ansible.builtin.lineinfile:
-      path: "/home/{{ admin_user }}/.bashrc"
-      regexp: "^HISTSIZE=1000$"
-      line: "HISTSIZE=10000"
-
-  - name: "Customizing history size and timestamp for {{ admin_user }}, 2/2"
-    ansible.builtin.replace:
-      path: "/home/{{ admin_user }}/.bashrc"
-      regexp: "^HISTFILESIZE=2000$"
-      replace: 'HISTFILESIZE=20000\n\n# add timestamp to "history" output\nHISTTIMEFORMAT="%Y/%m/%d %T: "'
-
-  - name: "Fixing locale settings in .bashrc"
-    ansible.builtin.blockinfile:
-      path: "/home/{{ admin_user }}/.bashrc"
-      block: |
-        export LANGUAGE="C.UTF-8"
-        export LC_ALL="C.UTF-8"
-
-  - name: "Customizing Bash aliases"
+  - name: "Setting custom home page"
     ansible.builtin.copy:
-      src: bash_aliases
-      dest: "/home/{{ admin_user }}/.bash_aliases"
-      owner: "{{ admin_user }}"
-      group: "{{ admin_user }}"
-      mode: "0644"
-      backup: yes
+      src: "index.html"
+      dest: "/var/www/html/index.html"
+
+  - name: "Customizing lighttpd port"
+    ansible.builtin.lineinfile:
+      path: "/etc/lighttpd/lighttpd.conf"
+      regexp: "^server.port"
+      line: "server.port = 8080"
+    notify:
+      - restart_lighttpd
 
