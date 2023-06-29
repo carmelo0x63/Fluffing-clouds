@@ -99,7 +99,10 @@ $ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/oci-
 
 - Install all security updates on your new instances.
 
-- Only port `tcp/22` is open to the internet by default. If you need to allow further ports, modify the [network-subnet-public.tf](network-subnet-public.tf) file to your liking. If you have `iptables` or similar running on your instance, you may need to change your firewall settings on the instance, too.
+- Only port `tcp/22` is open to the internet by default. If you need to allow further ports, modify the [network-subnet-public.tf](network-subnet-public.tf) file to your liking. If you have `iptables` or similar running on your instance, you may need to change your firewall settings on the instance, too. For instance:
+```
+$ sudo iptables -I INPUT 6 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
+```
 
 - Explore the other OCI [free tier](https://www.oracle.com/cloud/free/) services as well.
 

@@ -51,72 +51,73 @@ resource "oci_core_security_list" "public-security-list" {
     description = "HTTP traffic"
 
     tcp_options {
-      min = 8000
-      max = 8000
+      min = 8080
+      max = 8080
     }
   }
 
-  #   ingress_security_rules {
-  #     stateless   = false
-  #     source      = "0.0.0.0/0"
-  #     source_type = "CIDR_BLOCK"
-  #     protocol    = "6"
-  #     description = "HTTPS traffic"
+#  ingress_security_rules {
+#    stateless   = false
+#    source      = "0.0.0.0/0"
+#    source_type = "CIDR_BLOCK"
+#    protocol    = "6"
+#    description = "HTTPS traffic"
+#
+#    tcp_options {
+#      min = 443
+#      max = 443
+#    }
+#  }
 
-  #     tcp_options {
-  #       min = 443
-  #       max = 443
-  #     }
-  #   }
+#  ingress_security_rules {
+#    stateless   = false
+#    source      = "0.0.0.0/0"
+#    source_type = "CIDR_BLOCK"
+#    protocol    = "1"
+#    description = "ICMP Port Unreachable"
+#
+#    icmp_options {
+#      type = 3
+#      code = 4
+#    }
+#  }
 
-  ingress_security_rules {
-    stateless   = false
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
-    protocol    = "1"
-    description = "ICMP Port Unreachable"
+#  ingress_security_rules {
+#    stateless   = false
+#    source      = "10.0.0.0/16"
+#    source_type = "CIDR_BLOCK"
+#    protocol    = "1"
+#    description = "ICMP Destination Unreachable"
+#
+#    icmp_options {
+#      type = 3
+#    }
+#  }
 
-    icmp_options {
-      type = 3
-      code = 4
-    }
-  }
+#  ingress_security_rules {
+#    stateless   = false
+#    source      = "10.0.0.0/16"
+#    source_type = "CIDR_BLOCK"
+#    protocol    = "1"
+#    description = "ICMP Echo Reply"
+#
+#    icmp_options {
+#      type = 0
+#    }
+#  }
 
-  ingress_security_rules {
-    stateless   = false
-    source      = "10.0.0.0/16"
-    source_type = "CIDR_BLOCK"
-    protocol    = "1"
-    description = "ICMP Destination Unreachable"
+#  ingress_security_rules {
+#    stateless   = false
+#    source      = "10.0.0.0/16"
+#    source_type = "CIDR_BLOCK"
+#    protocol    = "1"
+#    description = "ICMP Echo"
+#
+#    icmp_options {
+#      type = 8
+#    }
+#  }
 
-    icmp_options {
-      type = 3
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "10.0.0.0/16"
-    source_type = "CIDR_BLOCK"
-    protocol    = "1"
-    description = "ICMP Echo Reply"
-
-    icmp_options {
-      type = 0
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "10.0.0.0/16"
-    source_type = "CIDR_BLOCK"
-    protocol    = "1"
-    description = "ICMP Echo"
-
-    icmp_options {
-      type = 8
-    }
-  }
 }
 
 resource "oci_core_network_security_group" "cloudchallenge-network-security-group" {
