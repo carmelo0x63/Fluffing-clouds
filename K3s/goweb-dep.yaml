@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: goweb-ctr
-        image: carmelo0x99/goweb:multiarch
+        image: carmelo0x99/goweb:2.0
         ports:
         - containerPort: 8080
