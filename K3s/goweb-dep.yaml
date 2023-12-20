@@ -18,4 +18,4 @@ spec:
       - name: goweb-ctr
         image: carmelo0x99/goweb:2.0
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
