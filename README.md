@@ -1,6 +1,6 @@
 # Fluffing clouds :)
 A collection of scripts to build infrastructure as code (IaC) both on-premises and in the cloud.</br>
-The directories listed below cover several technologies such as Terraform's HCL (HashiCorp Configuration Language), Ansible, and cloud-init.</br>
+The directories listed below cover several technologies such as [OpenTofu](https://opentofu.org/), [Ansible](https://www.ansible.com/), and [cloud-init](https://cloud-init.io/).</br>
 
 - [cloud-init + QEMU](./cloud-init/README.md)
 - [Terraform + KVM](./KVM/README.md)
@@ -9,3 +9,17 @@ The directories listed below cover several technologies such as Terraform's HCL 
 - [Google Cloud Platform (GCP)](./GCP/README.md)
 - [Amazon Web Services (AWS)](./AWS/README.md)
 
+----
+
+### OpenTofu cheatsheet
+```
+% tofu -version
+
+% tofu init [-upgrade]
+
+% tofu apply -auto-approve
+
+% tofu state list
+
+% tofu apply -destroy -auto-approve
+```

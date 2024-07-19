@@ -1,12 +1,12 @@
 // A single AWS instance
 resource "aws_instance" "t3-instance" {
-  ami                    = "ami-0889a44b331db0194"
-  instance_type          = "t3.nano"
+  ami                    = "ami-048e6f7223041530b"
+  instance_type          = "t3.micro"
   key_name               = "aws-static-webserver"
   vpc_security_group_ids = [aws_security_group.s_group.id]
 
   tags = {
-    Name = "t3-multipurpose"
+    Name = "t3u-git-python3"
 #    Name = "aws-web-${random_id.instance_id.hex}"
   }
 
@@ -20,8 +20,8 @@ resource "aws_instance" "t3-instance" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install -yq python3",
-      "echo '[+] Python3 installed!'"
+      "sudo dnf install -yq git python3",
+      "echo '[+] Git, Python3 installed!'"
     ]
   }
 }
