@@ -15,20 +15,20 @@ variable "aws_secret_key" {
 }
 
 variable "aws_az" {
-  type        = string
   description = "AWS AZ"
+  type        = string
   default     = "eu-south-1c"
 }
 
 variable "vpc_cidr" {
-  type        = string
   description = "CIDR for the VPC"
+  type        = string
   default     = "10.1.64.0/18"
 }
 
 variable "public_subnet_cidr" {
-  type        = string
   description = "CIDR for the public subnet"
+  type        = string
   default     = "10.1.64.0/24"
 }
 
@@ -52,3 +52,8 @@ variable "private_key" {
   default = "~/.ssh/aws-static-webserver"
 }
 
+variable "ami_id" {
+  description = "Amazon Linux 2023 AMI - updated 20240906"
+  type        = string
+  default     = "ami-08abf76f1e23f10c2"
+}

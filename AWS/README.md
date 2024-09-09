@@ -1,12 +1,12 @@
 # Virtual Lab on Amazon Web Services (AWS)
 This Terraform plan builds a virtual lab environment on the Amazon Web Services (AWS) infrastructure composed of:
-- One EC2 instance (t3-nano)
+- One EC2 instance (t2-micro, FREE tier)
 
 ## About the project
 
 The following resources are deployed within the free-tier offer:
 
-- 1x **t3-nano** instance (1 vCPU, 0.5 GB RAM, x86_64)
+- 1x **t2-micro** instance (1 vCPU, 1 GB RAM, x86_64)
 - Reasonably sane configuration settings
 
 ## Requirements

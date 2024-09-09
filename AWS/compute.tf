@@ -1,12 +1,21 @@
 // A single AWS instance
-resource "aws_instance" "t3-instance" {
-  ami                    = "ami-048e6f7223041530b"
-  instance_type          = "t3.micro"
+resource "aws_instance" "t2u-free-instance" {
+  ami                    = var.ami_id
+  instance_type          = "t2.micro"
   key_name               = "aws-static-webserver"
   vpc_security_group_ids = [aws_security_group.s_group.id]
 
+#  root_block_device {
+#    volume_size = 16
+#  }
+
+#  ebs_block_device {
+#    device_name = "/dev/sda1"
+#    volume_size = 24
+#  }
+
   tags = {
-    Name = "t3u-git-python3"
+    Name = "t2u-git-python3"
 #    Name = "aws-web-${random_id.instance_id.hex}"
   }
 
@@ -14,7 +23,7 @@ resource "aws_instance" "t3-instance" {
     type        = "ssh"
     user        = "ec2-user"
     private_key = file(var.private_key)
-    host        = aws_instance.t3-instance.public_ip
+    host        = aws_instance.t2u-free-instance.public_ip
     timeout     = "2m"
   }
 
