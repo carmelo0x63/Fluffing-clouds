@@ -20,6 +20,18 @@ variable "aws_az" {
   default     = "eu-south-1c"
 }
 
+variable "ami_id" {
+  description = "Amazon Linux 2023 AMI - updated 20240906"
+  type        = string
+  default     = "ami-08abf76f1e23f10c2"
+}
+
+variable "instance_type" {
+  description = "AMI instance type"
+  type        = string
+  default     = "t2.micro"
+}
+
 variable "vpc_cidr" {
   description = "CIDR for the VPC"
   type        = string
@@ -52,8 +64,3 @@ variable "private_key" {
   default = "~/.ssh/aws-static-webserver"
 }
 
-variable "ami_id" {
-  description = "Amazon Linux 2023 AMI - updated 20240906"
-  type        = string
-  default     = "ami-08abf76f1e23f10c2"
-}
