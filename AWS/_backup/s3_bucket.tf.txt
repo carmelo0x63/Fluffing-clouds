@@ -1,9 +1,0 @@
-provider "aws" {
-  profile = "default"
-  region  = "eu-central-1"
-}
-
-resource "aws_s3_bucket" "tf_s3" {
-  bucket = "carmelo0x99-s3-bucket"
-  acl    = "private"
-}

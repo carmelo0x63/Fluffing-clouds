@@ -53,3 +53,4 @@ terraform.tfvars
 *_remote_ip.txt
 .DS_Store
 *bkp/
+_archived/
