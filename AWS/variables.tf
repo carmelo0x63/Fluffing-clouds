@@ -21,27 +21,27 @@ variable "aws_az" {
 }
 
 variable "ami_id" {
-  description = "Amazon Linux 2023 AMI - updated 20240906"
+  description = "Amazon Linux 2023 AMI - updated 20240926"
   type        = string
-  default     = "ami-08abf76f1e23f10c2"
+  default     = "ami-06d4fa1e7c1b6d9b7"
 }
 
 variable "instance_type" {
   description = "AMI instance type"
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "vpc_cidr" {
   description = "CIDR for the VPC"
   type        = string
-  default     = "10.1.64.0/18"
+  default     = "10.10.10.0/24"
 }
 
 variable "public_subnet_cidr" {
   description = "CIDR for the public subnet"
   type        = string
-  default     = "10.1.64.0/24"
+  default     = "10.10.10.0/24"
 }
 
 variable "server_port" {

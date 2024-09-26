@@ -30,7 +30,7 @@ resource "aws_instance" "t2u-free-instance" {
   provisioner "remote-exec" {
     inline = [
       "sudo dnf install -yq git python3",
-      "echo '[+] Git, Python3 installed!'"
+      "echo '[+] Git, Python3 installed!' > install_log.txt"
     ]
   }
 }

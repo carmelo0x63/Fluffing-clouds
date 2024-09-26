@@ -17,9 +17,17 @@ The directories listed below cover several technologies such as [OpenTofu](https
 
 % tofu init [-upgrade]
 
+% tofu validate
+
+% tofu fmt
+
 % tofu apply -auto-approve
+
+% tofu show
 
 % tofu state list
 
-% tofu apply -destroy -auto-approve
+% tofy output
+
+% tofu destroy -auto-approve
 ```
