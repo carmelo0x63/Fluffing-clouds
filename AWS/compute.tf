@@ -2,7 +2,7 @@
 resource "aws_instance" "t2u-free-instance" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  key_name               = "aws-static-webserver"
+  key_name               = "aws-generic-server"
   vpc_security_group_ids = [aws_security_group.s_group.id]
 
 #  root_block_device {

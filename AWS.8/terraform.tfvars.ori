@@ -1,0 +1,10 @@
+aws_region        = "us-east-1" 
+aws_access_key    = "***"
+aws_secret_key    = "***"
+aws_az            = "us-east-1c"
+#vpc_cidr       =
+#public_subnet_cidr = 
+#server_port      = "8080" 
+#ssh_port         = "22"
+#public_key       = "~/.ssh/aws-static-webserver.pub"
+#private_key      = "~/.ssh/aws-static-webserver"
