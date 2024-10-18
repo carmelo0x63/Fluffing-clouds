@@ -8,16 +8,24 @@ resource "aws_security_group" "s_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+
   ingress {
-    from_port   = var.server_port
-    to_port     = var.server_port
+    from_port   = var.ollama_port
+    to_port     = var.ollama_port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = var.ollama_port
-    to_port     = var.ollama_port
+    from_port   = var.openwebui_port
+    to_port     = var.openwebui_port
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = var.streamlit_port
+    to_port     = var.streamlit_port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -33,4 +41,3 @@ resource "aws_security_group" "s_group" {
     "Terraform" = "true"
   }
 }
-

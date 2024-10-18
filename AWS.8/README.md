@@ -1,12 +1,12 @@
 # Virtual Lab on Amazon Web Services (AWS)
 This Terraform plan builds a virtual lab environment on the Amazon Web Services (AWS) infrastructure composed of:
-- One EC2 instance (t3-large, PAID)
+- One EC2 instance (G4dn "large", PAID)
 
 ## About the project
 
 The following resources are deployed within the free-tier offer:
 
-- 1x **t3-large** instance (2 vCPU, 8 GB RAM, x86_64)
+- 1x **g4dn.xlarge** instance (4 vCPU, 16 GB RAM, 1 GPU, x86_64)
 - Reasonably sane configuration settings
 
 ## Requirements
