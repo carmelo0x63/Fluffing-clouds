@@ -1,3 +1,9 @@
+variable "oci_region" {
+  description = "The name of the cloud region."
+  type        = string
+  default     = "eu-zurich-1"
+}
+
 variable "compartment_name" {
   description = "The name of the compartment."
   type        = string
@@ -31,12 +37,6 @@ variable "vm_name" {
 variable "vm_user" {
   description = "Default user for the virtual machine."
   type        = string
-}
-
-variable "region" {
-  description = "The name of the cloud region."
-  type        = string
-  default     = "ap-sydney-1"
 }
 
 variable "fingerprint" {

@@ -32,16 +32,16 @@ The following resources are deployed within the free-tier offer:
 
 2. OCI documentations has a section describing how to [configure the provider](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformproviderconfiguration.htm).</br> 
    The most important settings to be stored into [terraform.tfvars](./terraform.tfvars.ori) configuration file are listed below:
+   - `oci_region`
    - `tenancy_oid`
    - `user_ocid`
    - `private_key_path`
    - `fingerprint`
-   - `region`
 
    **NOTE**: `private_key_path` is **not** your SSH private key but the [API signing key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two). Additional info on [credentials, here](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/credentials.htm).</br>
    A pre-configured file, formatted for OCI CLI/SDK, can be downloaded from `Identity > Users > User Details > API Keys`. Converting it to `*.tfvars` format is immediate!
 
-3. Depending on your chosen `region`, retrieve the image ID from [this page](https://docs.oracle.com/en-us/iaas/images/) for your instances.
+3. Depending on your chosen `oci_region`, retrieve the image ID from [this page](https://docs.oracle.com/en-us/iaas/images/) for your instances.
 
    - Choose any of your preferred images (e.g. Ubuntu, CentOS) for the **VM.Standard.E2.1.Micro** instances
    - Choose the `aarch64` variation of Ubuntu 20.04, Oracle Linux 7.x or Oracle Linux 8.x Linux distributions for the **VM.Standard.A1.Flex** instance

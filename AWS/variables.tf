@@ -44,16 +44,16 @@ variable "public_subnet_cidr" {
   default     = "10.10.10.0/24"
 }
 
-variable "server_port" {
-  description = "The port the server will use for HTTP requests"
-  type        = number
-  default     = 8080
-}
-
 variable "ssh_port" {
   description = "Standard port for SSH"
   type        = number
   default     = 22
+}
+
+variable "server_port" {
+  description = "The port the server will use for HTTP requests"
+  type        = number
+  default     = 8080
 }
 
 variable "public_key" {
